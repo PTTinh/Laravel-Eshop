@@ -13,7 +13,7 @@
         </colgroup>
         <thead class="table-dark">
             <tr>
-                <th>ID</th>
+                <th>TT</th>
                 <th>Danh mục</th>
                 <th>Tên sản phẩm</th>
                 <th>Giá</th>
@@ -22,9 +22,11 @@
             </tr>
         </thead>
         <tbody>
+            @php $i = 0; @endphp
             @foreach ($product as $value)
+            @php $i++; @endphp
                 <tr>
-                    <td>{{ $value->id }}</td>
+                    <td>{{ $i }}</td>
                     <td>{{ $value->product_cate->name }}</td>
                     <td>{{ $value->name }}</td>
                     <td>

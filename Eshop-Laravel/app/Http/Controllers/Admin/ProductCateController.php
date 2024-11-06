@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\ProductCate;
 use Illuminate\Http\Request;
 
@@ -66,7 +67,10 @@ class ProductCateController extends Controller
     {
         // $product_cate = DB::table('product_cate')->where('id', $id)->first();
         $product_cate = ProductCate::find($id);
-        return view('admin.product_cate.edit', compact('product_cate'));
+        if(!$product_cate){
+            abort(404);
+        }
+        return response()->json($product_cate);
     }
 
     /**
@@ -92,11 +96,10 @@ class ProductCateController extends Controller
     public function destroy($id)
     {
         // kiểm tra xem danh mục có sản phẩm không
-        // $count_product = DB::table('product')->where('cate_id', $id)->count();
-        // if ($count_product > 0) {
-        //     return redirect()->route('product_cate.index');
-        // }
-        // DB::table('product_cate')->where('id', $id)->delete();
+        $count_product = Product::where('product_cate_id', $id)->count();
+        if ($count_product > 0) {
+            return redirect()->route('product_cate.index');
+        }
         ProductCate::destroy($id);
         return redirect()->route('product_cate.index');
     }
