@@ -29,7 +29,7 @@ class ProductController extends Controller
     public function create()
     {
         $product_cate = ProductCate::all();
-        return view('admin.product.add', compact('product_cate'));
+        return response()->json($product_cate);
     }
 
     /**
@@ -79,8 +79,7 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        $product_cate = ProductCate::all();
-        return view('admin.product.edit', compact('product', 'product_cate'));
+        return response()->json($product);
     }
 
     /**
@@ -114,8 +113,8 @@ class ProductController extends Controller
         } else {
             $request->validate([
                 'name' => 'required|max:250',
-                'price' => 'required|numeric',
-                'discount_price' => 'nullable|numeric',
+                'price' => 'required|numeric|max:20',
+                'discount_price' => 'nullable|numeric|max:20',
                 'description' => 'nullable|string|max:250',
                 'product_cate_id' => 'required'
             ], [
@@ -123,10 +122,12 @@ class ProductController extends Controller
                 'name.max' => 'Tên sản phẩm không được quá 250 ký tự',
                 'price.required' => 'Giá sản phẩm không được để trống',
                 'price.numeric' => 'Giá sản phẩm phải là số',
+                'price.max' => 'Giá sản phẩm không được quá 20 ký tự',
                 'description.max' => 'Mô tả không được quá 250 ký tự',
                 'description.string' => 'Mô tả phải là chuỗi',
                 'discount_price.numeric' => 'Giá khuyến mãi phải là số',
                 'discount_price.required' => 'Giá khuyến mãi không được để trống',
+                'discount_price.max' => 'Giá khuyến mãi không được quá 20 ký tự',
                 'product_cate_id.required' => 'Danh mục sản phẩm không được để trống'
             ]);
             $product = Product::findOrFail($id);
@@ -163,8 +164,8 @@ class ProductController extends Controller
     {
         $rules = [
             'name' => 'required|max:250',
-            'price' => 'required|numeric',
-            'discount_price' => 'nullable|numeric',
+            'price' => 'required|numeric|max:20',
+            'discount_price' => 'nullable|numeric|max:20',
             'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'nullable|string|max:250',
             'product_cate_id' => 'required'
@@ -173,9 +174,11 @@ class ProductController extends Controller
             'name.required' => 'Tên sản phẩm không được để trống',
             'name.max' => 'Tên sản phẩm không được quá 250 ký tự',
             'price.required' => 'Giá sản phẩm không được để trống',
+            'price.max' => 'Giá sản phẩm không được quá 20 ký tự',
             'discount_price.required' => 'Giá khuyến mãi không được để trống',
             'img.required' => 'Ảnh sản phẩm không được để trống',
             'discount_price.numeric' => 'Giá khuyến mãi phải là số',
+            'discount_price.max' => 'Giá khuyến mãi không được quá 20 ký tự',
             'price.numeric' => 'Giá sản phẩm phải là số',
             'img.image' => 'Ảnh sản phẩm phải là ảnh',
             'img.mimes' => 'Ảnh sản phẩm phải có định dạng jpeg, png, jpg, gif, svg',

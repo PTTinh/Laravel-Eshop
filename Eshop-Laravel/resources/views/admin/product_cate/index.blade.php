@@ -2,7 +2,7 @@
 @section('title', 'Danh sách danh mục sản phẩm')
 @section('admin-title', 'Danh sách danh mục sản phẩm')
 @section('content')
-    <a href="#" class="btn btn-primary" data-bs-target="#AddModal1" data-bs-toggle="modal">Thêm Danh Mục</a>
+    <a href="#" class="btn btn-primary" data-bs-target="#ModalProductCateAdd" data-bs-toggle="modal">Thêm Danh Mục</a>
     <table class="table table-striped">
         <colgroup>
             <col style="width: 5%;" />
@@ -29,7 +29,7 @@
                                 data-id="{{ $value->id }}"
                                 data-urlGet="{{ route('product_cate.edit', $value->id) }}"
                                 data-urlPut="{{ route('product_cate.update', $value->id) }}"
-                                class="btn btn-success btn-sm js-edit">Sửa</a>
+                                class="btn btn-success btn-sm js-product-cate-edit">Sửa</a>
                             <button type="submit" class="btn btn-danger btn-sm"
                                 onclick="return confirm('Xác nhận xóa')">Xóa</button>
                         </form>
@@ -38,7 +38,7 @@
             @endforeach
         </tbody>
     </table>
-    <div class="modal fade" id="AddModal1" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal fade" id="ModalProductCateAdd" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    <div class="modal fade" id="AddModal2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal fade" id="ModalProductCateEdit" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">

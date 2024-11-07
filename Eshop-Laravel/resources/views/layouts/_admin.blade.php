@@ -49,9 +49,6 @@
                                 <li>
                                     <a class="nav-link ms-2" href="{{ route("product_cate.index") }}">Danh sách</a>
                                 </li>
-                                <li>
-                                    <a class="nav-link ms-2" href="{{ route("product_cate.create") }}">Thêm</a>
-                                </li>
                             </ul>
                         </li>
                         <li>
@@ -62,9 +59,6 @@
                             <ul class="collapse list-unstyled" id="productSubmenu">
                                 <li>
                                     <a class="nav-link ms-2" href="{{ route("product.index") }}">Danh sách</a>
-                                </li>
-                                <li>
-                                    <a class="nav-link ms-2" href="{{ route("product.create") }}">Thêm</a>
                                 </li>
                             </ul>
                         </li>

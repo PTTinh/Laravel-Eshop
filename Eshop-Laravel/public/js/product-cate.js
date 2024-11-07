@@ -1,6 +1,6 @@
-const btnEdit = document.getElementsByClassName('js-edit')
+const btnEdit = document.getElementsByClassName('js-product-cate-edit')
 //khai báo modal
-const modalUpdate = new bootstrap.Modal("#AddModal2")
+const modalUpdate = new bootstrap.Modal("#ModalProductCateEdit")
 
 for (const ele of btnEdit) {
     ele.addEventListener('click', async ()=> {
