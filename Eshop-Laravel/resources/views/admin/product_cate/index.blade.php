@@ -1,7 +1,4 @@
-@extends('layouts._admin')
-@section('title', 'Danh sách danh mục sản phẩm')
-@section('admin-title', 'Danh sách danh mục sản phẩm')
-@section('content')
+<x-admin-layout title="Danh sách danh mục sản phẩm">
     <a href="#" class="btn btn-primary" data-bs-target="#ModalProductCateAdd" data-bs-toggle="modal">Thêm Danh Mục</a>
     <table class="table table-striped">
         <colgroup>
@@ -25,8 +22,7 @@
                         <form action="{{ route('product_cate.destroy', $value->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <a href="#" 
-                                data-id="{{ $value->id }}"
+                            <a href="#" data-id="{{ $value->id }}"
                                 data-urlGet="{{ route('product_cate.edit', $value->id) }}"
                                 data-urlPut="{{ route('product_cate.update', $value->id) }}"
                                 class="btn btn-success btn-sm js-product-cate-edit">Sửa</a>
@@ -38,52 +34,23 @@
             @endforeach
         </tbody>
     </table>
-    <div class="modal fade" id="ModalProductCateAdd" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Thêm Danh Mục</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('product_cate.store') }}" method="post">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Tên danh mục</label>
-                            <input type="text" class="form-control" id="name" name="name"
-                                placeholder="Nhập tên danh mục">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Thêm</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="ModalProductCateEdit" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Sửa Danh Mục</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="fUpdate" action="#" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Tên danh mục</label>
-                            <input type="text" class="form-control" id="name-update" name="name"
-                                placeholder="Nhập tên danh mục" value="">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Sửa</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+    <x-app-modal title="Thêm Danh Mục" id="ModalProductCateAdd">
+        <form action="{{ route('product_cate.store') }}" method="post">
+            @csrf
+            <x-app-input id="name" name="name" label="Tên danh mục" placeholder="Nhập tên danh mục" required />
+            <button type="submit" class="btn btn-primary">Thêm</button>
+        </form>
+    </x-app-modal>
+    <x-app-modal title="Sửa Danh Mục" id="ModalProductCateEdit">
+        <form id="fUpdate" action="#" method="POST">
+            @csrf
+            @method('PUT')
+            <x-app-input id="name-update" name="name" label="Tên danh mục"  placeholder="Nhập tên danh mục" required />
+            <button type="submit" class="btn btn-primary">Sửa</button>
+        </form>
+    </x-app-modal>
     {{ $product_cate->links() }}
-@endsection
-@section('script')
-    <script src="{{ asset('js/product-cate.js') }}"></script>
-@endsection
+    <x-slot:script>
+        <script src="{{ asset('js/product-cate.js') }}"></script>
+    </x-slot>
+</x-admin-layout>

@@ -28,7 +28,7 @@ class ProductCateController extends Controller
      */
     public function create()
     {
-        return view('admin.product_cate.add');
+        abort(404);
     }
 
     /**

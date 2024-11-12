@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\Admin\ProductCateController;
 use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
@@ -12,5 +12,10 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function () {
     Route::resource('product_cate', ProductCateController::class, ['except' => ['show']]);
     Route::resource('product', ProductController::class);
-    Route::resource('login', LoginController::class)->only(['index', 'store']);
 });
+
+Route::get("/resister", [AccountController::class, 'resister'])->name('resister');
+Route::post("/resister", [AccountController::class, 'resisterPost'])->name('resister.post');
+Route::get("/login", [AccountController::class, 'login'])->name('login');
+Route::post("/login", [AccountController::class, 'loginPost'])->name('login.post');
+// Route::get("/login", [AccountController::class, 'login'])->name('login');

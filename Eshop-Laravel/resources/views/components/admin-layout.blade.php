@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('lib/bootstrap-5.3.3-dist/css/bootstrap.min.css') }}">
-    <title>@yield('title')</title>
+    <title>{{ $attributes['title']??"tiêu đề" }}</title>
 </head>
 
 <body>
@@ -69,9 +69,9 @@
                 @include('include._error')
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">@yield('admin-title')</h1>
+                    <h1 class="h2">{{ $attributes['title']??"tiêu đề" }}</h1>
                 </div>
-                @yield('content')
+                {{ $slot }}
             </main>
             <footer>
 
@@ -79,8 +79,8 @@
         </div>
     </div>
     <script src="{{ asset('lib/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js') }}"></script>
-    @section('script')
-    @show
+
+   {{ $script??"" }}
 </body>
 
 </html>

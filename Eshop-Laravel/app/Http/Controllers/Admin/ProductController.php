@@ -168,8 +168,8 @@ class ProductController extends Controller
     {
         $rules = [
             'name' => 'required|max:250',
-            'price' => 'required|numeric|max:20',
-            'discount_price' => 'nullable|numeric|max:20',
+            'price' => 'required|numeric',
+            'discount_price' => 'nullable|numeric',
             'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'nullable|string|max:250',
             'product_cate_id' => 'required'
