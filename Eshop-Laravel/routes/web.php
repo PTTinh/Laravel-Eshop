@@ -18,4 +18,3 @@ Route::get("/resister", [AccountController::class, 'resister'])->name('resister'
 Route::post("/resister", [AccountController::class, 'resisterPost'])->name('resister.post');
 Route::get("/login", [AccountController::class, 'login'])->name('login');
 Route::post("/login", [AccountController::class, 'loginPost'])->name('login.post');
-// Route::get("/login", [AccountController::class, 'login'])->name('login');

@@ -17,6 +17,6 @@ for (const ele of btnEdit) {
         //sửa action của form update
         document.getElementById('fUpdate').action = urlPut;
         //hiển thị modal
-        modalUpdate.show();       
+        modalUpdate.show();    
     })
 }

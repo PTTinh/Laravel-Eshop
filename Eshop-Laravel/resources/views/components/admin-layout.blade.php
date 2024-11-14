@@ -33,12 +33,13 @@
                     </li>
                 </ul>
             </div> --}}
+           
         </div>
     </nav>
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-                <div class="sidebar-sticky">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar " style="min-height: 100vh">
+                <div class="sidebar-sticky" >
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link active" href="#productCateSubmenu" data-bs-toggle="collapse"

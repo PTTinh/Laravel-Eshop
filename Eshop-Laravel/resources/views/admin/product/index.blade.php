@@ -1,7 +1,4 @@
-@extends('layouts._admin')
-@section('title', 'Danh sách sản phẩm')
-@section('admin-title', 'Danh sách sản phẩm')
-@section('content')
+<x-admin-layout title="Danh sách sản phẩm">
     <a href="#" class="btn btn-primary" data-bs-target="#ModalProductAdd" data-bs-toggle="modal">Thêm Sản Phẩm</a>
     <table class="table table-striped">
         <colgroup>
@@ -134,7 +131,7 @@
     </x-app-modal>
 
     {{ $product->links() }}
-@endsection
-@section('script')
-    <script src="{{ asset('js/product.js') }}"></script>
-@endsection
+    <x-slot:script>
+        <script src="{{ asset('js/product.js') }}"></script>
+    </x-slot>
+</x-admin-layout>
