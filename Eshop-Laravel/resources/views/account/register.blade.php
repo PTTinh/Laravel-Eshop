@@ -20,7 +20,7 @@
                         <h4>Đăng Ký</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('resister.post') }}" method="POST">
+                        <form action="{{ route('register.post') }}" method="POST">
                             @csrf
                             <div class="mb-3">
                                 <label for="name" class="form-label">Tên</label>

@@ -9,15 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class AccountController extends Controller
 {
-    public function resister()
+    public function register()
     {
-        return view('account.resister');
+        return view('account.register');
     }
-    public function login()
-    {
-        return view('account.login');
-    }
-    public function resisterPost(Request $request)
+    public function registerPost(Request $request)
     {
         $request->validate([
             'name' => 'required',
@@ -30,15 +26,27 @@ class AccountController extends Controller
         $data['password'] = Hash::make($data['password']);
         $user = new User($data);
         $user->save();
-        return redirect()->route('resister')->with('success', 'Đăng ký thành công');
+        return redirect()->route('register')->with('success', 'Đăng ký thành công');
+    }
+    public function login()
+    {
+        return view('account.login');
+    }
+    public function loginPost(Request $request) {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        $data = $request->only('email', 'password');
+        if (Auth::attempt($data)) {
+            return redirect()->route('product_cate.index');
+        }
+        return redirect()->route('login')->with('error', 'Đăng nhập thất bại');
     }
 
-    public function loginPost(Request $request)
-    {
-    }
-
-    public function logout()
-    {
-       
+    public function logout() {
+        Auth::logout();
+        return redirect()->route('login');
     }
 }
