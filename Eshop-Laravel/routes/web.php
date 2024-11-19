@@ -21,5 +21,4 @@ Route::get("/login", [AccountController::class, 'login'])->name('login');
 Route::post("/login", [AccountController::class, 'loginPost'])->name('login.post');
 Route::get("/logout", [AccountController::class, 'logout'])->name('logout');
 Route::get("/cart", [CartController::class, 'index'])->name('cart');
-Route::post("/cart/add", [CartController::class, 'add'])->name('cart.add');
-Route::post("/cart/del", [CartController::class, 'del'])->name('cart.del');
+Route::get("/cart/add/{id}", [CartController::class, 'addToCart'])->name('cart.add');

@@ -20,11 +20,9 @@
             </tr>
         </thead>
         <tbody>
-            @php $i = 0; @endphp
             @foreach ($product as $value)
-                @php $i++; @endphp
                 <tr>
-                    <td>{{ $i }}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $value->product_cate->name }}</td>
                     <td>{{ $value->name }}</td>
                     <td>

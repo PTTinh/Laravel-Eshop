@@ -71,7 +71,7 @@
                         </li>
 
                     </ul>
-                    <form class="d-flex h-50 mt-2" role="search">
+                    <form class="d-flex h-50 mt-1" role="search">
                         <input class="form-control me-2 d-none d-lg-block" type="search" placeholder="Search"
                             aria-label="Search">
                         <button class="btn btn-outline-success me-2 d-none d-lg-block" type="submit"><i
