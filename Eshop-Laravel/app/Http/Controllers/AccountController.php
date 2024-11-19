@@ -11,6 +11,9 @@ class AccountController extends Controller
 {
     public function register()
     {
+        if (Auth::check()) {
+            return redirect()->route('home');
+        }
         return view('account.register');
     }
     public function registerPost(Request $request)
@@ -26,13 +29,17 @@ class AccountController extends Controller
         $data['password'] = Hash::make($data['password']);
         $user = new User($data);
         $user->save();
-        return redirect()->route('register')->with('success', 'Đăng ký thành công');
+        return redirect()->route('login')->with('success', 'Đăng ký thành công');
     }
     public function login()
     {
+        if (Auth::check()) {
+            return redirect()->route('home');
+        }
         return view('account.login');
     }
-    public function loginPost(Request $request) {
+    public function loginPost(Request $request)
+    {
         $request->validate([
             'email' => 'required|email',
             'password' => 'required'
@@ -45,7 +52,8 @@ class AccountController extends Controller
         return redirect()->route('login')->with('error', 'Đăng nhập thất bại');
     }
 
-    public function logout() {
+    public function logout()
+    {
         Auth::logout();
         return redirect()->route('login');
     }

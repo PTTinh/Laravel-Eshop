@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\BaseController;
 use App\Models\Product;
 use App\Models\ProductCate;
 use Illuminate\Http\Request;
 
-class ProductCateController extends Controller
+class ProductCateController extends BaseController
 {
     /**
      * Hiển thị danh sách tài nguyên.

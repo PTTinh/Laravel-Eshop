@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\BaseController;
 use App\Models\Product;
 use App\Models\ProductCate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ProductController extends Controller
+class ProductController extends BaseController
 {
     /**
      * Display a listing of the resource.
