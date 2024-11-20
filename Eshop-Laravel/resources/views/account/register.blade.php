@@ -41,6 +41,9 @@
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Đăng Ký</button>
                         </form>
+                        <div>
+                            <a href="{{ route('login') }}">Đăng nhập</a>
+                        </div>
                     </div>
                 </div>
             </div>

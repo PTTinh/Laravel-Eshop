@@ -61,17 +61,17 @@
                     @include('admin.product._product_cate')
                 </select>
             </div>
-            <x-app-input id="name" label="Nhập tên sản phẩm" required>
+            <x-app-input id="name" name="name" label="Nhập tên sản phẩm" required>
                 <x-slot:element>
                     <span class="text-danger">*</span>
                 </x-slot>
             </x-app-input>
-            <x-app-input id="price" type="number" label="Giá sản phẩm" required>
+            <x-app-input id="price" name="price" type="number" label="Giá sản phẩm" required>
                 <x-slot:element>
                     <span class="text-danger">*</span>
                 </x-slot>
             </x-app-input>
-            <x-app-input id="discount_price" type="number" label="Giá khuyến mãi" required>
+            <x-app-input id="discount_price" name="discount_price" type="number" label="Giá khuyến mãi" required>
                 <x-slot:element>
                     <span class="text-danger">*</span>
                 </x-slot>
@@ -80,7 +80,7 @@
                 <label for="description" class="form-label">Mô tả sản phẩm <span class="text-danger">*</span></label>
                 <textarea name="description" id="description" class="form-control" rows="5"></textarea>
             </div>
-            <x-app-input id="img" type="file" label="Ảnh Sản Phẩm" required>
+            <x-app-input id="img" name="img" type="file" label="Ảnh Sản Phẩm" required>
                 <x-slot:element>
                     <span class="text-danger">*</span>
                 </x-slot>

@@ -1,6 +1,7 @@
-<header class="col-12">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">
+<header>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+            <a class="navbar-brand " href="#">
                 <img src="#" alt="ESHOP-LOGO" class="d-inline-block align-top">
             </a>
             <div>
@@ -29,11 +30,8 @@
                         </div>
                     </div>
                 </div>
-                {{-- Cart --}}
-                {{-- <button class="btn btn-outline-success d-lg-none" type="button">
-                    <i class='bx bx-cart-alt'></i>
-                </button> --}}
-                <a href="{{ route('cart') }}" class="btn btn-outline-success d-lg-none"><i class='bx bx-cart-alt'></i></a>
+                <a href="{{ route('cart') }}" class="btn btn-outline-success d-lg-none"><i
+                        class='bx bx-cart-alt'></i></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -62,10 +60,7 @@
                                     <p class="mb-0">{{ Auth::user()->name }}</p>
                                     <a class="nav-link" href="{{ route('logout') }}">Đăng xuất</a>
                                 @else
-                                    <div class="d-flex">
-                                        <a class="nav-link" href="{{ route('login') }}">Đăng nhập/</a>
-                                        <a class="nav-link" href="{{ route('register') }}">Đăng ký</a>
-                                    </div>
+                                    <a class="nav-link" href="{{ route('login') }}">Đăng nhập</a>
                                 @endif
                             </div>
                         </li>
@@ -76,10 +71,8 @@
                             aria-label="Search">
                         <button class="btn btn-outline-success me-2 d-none d-lg-block" type="submit"><i
                                 class='bx bx-search-alt'></i></button>
-                       {{--  <button class="btn btn-outline-success d-none d-lg-block me-2" type="button">
-                            <i class='bx bx-cart-alt'></i>
-                        </button> --}}
-                        <a href="{{ route('cart') }}" class="btn btn-outline-success d-none d-lg-block me-2"><i class='bx bx-cart-alt'></i></a>
+                        <a href="{{ route('cart') }}" class="btn btn-outline-success d-none d-lg-block me-2"><i
+                                class='bx bx-cart-alt'></i></a>
                     </form>
                     <div class="btn-group d-none d-lg-block">
                         @if (Auth::check() === true)
@@ -96,11 +89,11 @@
                                 <li><a class="dropdown-item" href="{{ route('logout') }}">Đăng xuất</a></li>
                             </ul>
                         @else
-                            <a href="{{ route('register') }}" class="btn btn-outline-success mt-1">Đăng ký</a>
                             <a href="{{ route('login') }}" class="btn btn-outline-success mt-1">Đăng nhập</a>
                         @endif
                     </div>
                 </div>
             </div>
         </nav>
+    </div>
 </header>

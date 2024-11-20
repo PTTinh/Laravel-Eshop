@@ -27,6 +27,9 @@
                                 placeholder="Nhập Mật Khẩu" required />
                             <button type="submit" class="btn btn-primary w-100">Đăng nhập</button>
                         </form>
+                        <div>
+                            <a href="{{ route('register') }}">Đăng ký</a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -4,15 +4,15 @@
 @include('include._head')
 
 <body>
-    <div class="container-fluid border">
-        <div class="row">
-            @include('include._header')
-            <main class="col-12">
+    @include('include._header')
+    <main>
+        <div class="container">
+            <div class="row">
                 {{ $slot }}
-            </main>
-            @include('include._footer')
+            </div>
         </div>
-    </div>
+    </main>
+    @include('include._footer')
 </body>
 
 </html>

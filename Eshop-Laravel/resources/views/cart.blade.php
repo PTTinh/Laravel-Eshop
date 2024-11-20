@@ -40,7 +40,7 @@
                                     <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>
-                                            <img src="#" alt="{{ $product->name }}" class="img-fluid">
+                                            <img width='30px' src="{{ asset('images/'.$product->img) }}" alt="{{ $product->name }}" class="img-fluid">
                                         </td>
                                         <td>{{ $product->name }}</td>
                                         <td>
