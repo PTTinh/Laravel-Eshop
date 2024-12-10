@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Đăng Ký</title>
     <link rel="stylesheet" href="{{ asset('lib/bootstrap-5.3.3-dist/css/bootstrap.min.css') }}">
-
 </head>
 
 <body>
@@ -15,6 +14,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
+                    @include('include._alert')
                     @include('include._error')
                     <div class="card-header text-center">
                         <h4>Đăng Ký</h4>

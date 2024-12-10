@@ -47,7 +47,10 @@ class AccountController extends Controller
 
         $data = $request->only('email', 'password');
         if (Auth::attempt($data)) {
-            return redirect()->route('product_cate.index');
+            if (Auth::user()->role == 1) {
+                return redirect()->route('product_cate.index')->with('success', 'Đăng nhập thành công');
+            }
+            return redirect()->route('home')->with('success', 'Đăng nhập thành công');
         }
         return redirect()->route('login')->with('error', 'Đăng nhập thất bại');
     }
@@ -55,6 +58,6 @@ class AccountController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'Đăng xuất thành công');
     }
 }

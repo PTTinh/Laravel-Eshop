@@ -15,6 +15,7 @@
             <div class="col-md-6">
                 <div class="card">
                     @include('include._error')
+                    @include('include._alert')
                     <div class="card-header text-center">
                         <h4>Đăng nhập</h4>
                     </div>
@@ -37,5 +38,4 @@
     </div>
     <script src="{{ asset('lib/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js') }}"></script>
 </body>
-
 </html>

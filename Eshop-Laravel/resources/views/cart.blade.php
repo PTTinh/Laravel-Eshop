@@ -11,11 +11,11 @@
                         <table class="table">
                             <colgroup>
                                 <col style="width: 5%;">
+                                <col style="width: 15%;">
+                                <col style="width: 25%;">
+                                <col style="width: 15%;">
                                 <col style="width: 20%;">
                                 <col style="width: 25%;">
-                                <col style="width: 10%;">
-                                <col style="width: 20%;">
-                                <col style="width: 20%;">
                             </colgroup>
                             <thead>
                                 <tr>
@@ -25,6 +25,7 @@
                                     <th>Số lượng</th>
                                     <th>Giá</th>
                                     <th>Thành tiền</th>
+                                    <th>Thao tác</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -48,6 +49,9 @@
                                         </td>
                                         <td>{{ number_format($product->price) }}</td>
                                         <td>{{ number_format($price * $quantity) }}</td>
+                                        <td>
+                                            <a href="{{ route('cart.delete', ['id' => $product->id]) }}" class="btn btn-danger">Xóa</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

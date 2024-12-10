@@ -1,11 +1,10 @@
 <header>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-            <a class="navbar-brand " href="#">
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
                 <img src="#" alt="ESHOP-LOGO" class="d-inline-block align-top">
             </a>
             <div>
-                {{-- Search --}}
                 <button class="btn btn-outline-success d-lg-none" type="button" data-bs-toggle="modal"
                     data-bs-target="#searchModal">
                     <i class='bx bx-search-alt'></i>
@@ -30,8 +29,15 @@
                         </div>
                     </div>
                 </div>
-                <a href="{{ route('cart') }}" class="btn btn-outline-success d-lg-none"><i
-                        class='bx bx-cart-alt'></i></a>
+
+                <a href="{{ route('cart') }}" class="btn btn-outline-success d-lg-none position-relative">
+                    <i class='bx bx-cart-alt'></i>
+                    @if (Session::has('carts'))
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            {{ count(session('carts')) }}
+                        </span>
+                    @endif
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -64,15 +70,22 @@
                                 @endif
                             </div>
                         </li>
-
                     </ul>
                     <form class="d-flex h-50 mt-1" role="search">
                         <input class="form-control me-2 d-none d-lg-block" type="search" placeholder="Search"
                             aria-label="Search">
                         <button class="btn btn-outline-success me-2 d-none d-lg-block" type="submit"><i
                                 class='bx bx-search-alt'></i></button>
-                        <a href="{{ route('cart') }}" class="btn btn-outline-success d-none d-lg-block me-2"><i
-                                class='bx bx-cart-alt'></i></a>
+                        <a href="{{ route('cart') }}"
+                            class="btn btn-outline-success d-none position-relative d-lg-block me-2"><i
+                                class='bx bx-cart-alt'></i>
+                            @if (Session::has('carts'))
+                                <span
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                    {{ count(session('carts')) }}
+                                </span>
+                            @endif
+                        </a>
                     </form>
                     <div class="btn-group d-none d-lg-block">
                         @if (Auth::check() === true)

@@ -48,18 +48,15 @@ class ProductController extends BaseController
         // $request->file('img')->getSize(); // lấy kích thước file
         // $request->file('img')->getError(); // file lỗi
         // $request->file('img')->isValid(); // kiểm tra file có hợp lệ không
-        $this->custom_validate($request);
+        $this->custom_validate($request);        
         $filename = $request->img->getClientOriginalName() . '-' . time() . "." . $request->img->extension(); // tạo tên file
         $request->img->move(public_path('images'), $filename); // chuyển file vào thư mục public/images
-        Product::create([
-            'name' => $request->name,
-            'price' => $request->price,
-            'discount_price' => $request->discount_price,
-            'description' => $request->description,
-            'img' => $filename,
-            'product_cate_id' => $request->product_cate_id
-        ]);
-        return redirect()->route('product.index');
+        $data = $request->all();
+        unset($data['_token']);
+        $data['img'] = $filename;
+        $product = new Product($data);
+        $product->save();
+        return redirect()->route('product.index')->with('success', 'Thêm sản phẩm thành công');
     }
 
     /**
@@ -120,7 +117,7 @@ class ProductController extends BaseController
             $request->validate([
                 'name' => 'required|max:250',
                 'price' => 'required|numeric',
-                'discount_price' => 'nullable|numeric',
+                'discount_price' => 'nullable|numeric|lt:price',
                 'description' => 'nullable|string|max:250',
                 'product_cate_id' => 'required'
             ], [
@@ -128,6 +125,8 @@ class ProductController extends BaseController
                 'name.max' => 'Tên sản phẩm không được quá 250 ký tự',
                 'price.required' => 'Giá sản phẩm không được để trống',
                 'price.numeric' => 'Giá sản phẩm phải là số',
+                'discount_price.lt' => 'Giá khuyến mãi phải nhỏ hơn giá sản phẩm',
+                'discount_price.numeric' => 'Giá khuyến mãi phải là số',
                 'description.max' => 'Mô tả không được quá 250 ký tự',
                 'description.string' => 'Mô tả phải là chuỗi',
                 'discount_price.numeric' => 'Giá khuyến mãi phải là số',
@@ -143,7 +142,7 @@ class ProductController extends BaseController
                 'product_cate_id' => $request->product_cate_id
             ]);
         }
-        return redirect()->route('product.index');
+        return redirect()->route('product.index')->with('success', 'Cập nhật sản phẩm thành công');
     }
 
     /**
@@ -161,15 +160,15 @@ class ProductController extends BaseController
         if (file_exists($image_path)) {
             unlink($image_path);
         }
-        DB::table('products')->where('id', $id)->delete();
-        return redirect()->route('product.index');
+        $product->delete();
+        return redirect()->route('product.index')->with('success', 'Xóa sản phẩm thành công');
     }
     private function custom_validate($request)
     {
         $rules = [
             'name' => 'required|max:250',
             'price' => 'required|numeric',
-            'discount_price' => 'nullable|numeric',
+            'discount_price' => 'nullable|numeric|lt:price',
             'img' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'nullable|string|max:250',
             'product_cate_id' => 'required'
@@ -179,6 +178,7 @@ class ProductController extends BaseController
             'name.max' => 'Tên sản phẩm không được quá 250 ký tự',
             'price.required' => 'Giá sản phẩm không được để trống',
             'discount_price.required' => 'Giá khuyến mãi không được để trống',
+            'discount_price.lt' => 'Giá khuyến mãi phải nhỏ hơn giá sản phẩm',
             'img.required' => 'Ảnh sản phẩm không được để trống',
             'discount_price.numeric' => 'Giá khuyến mãi phải là số',
             'price.numeric' => 'Giá sản phẩm phải là số',

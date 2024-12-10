@@ -22,3 +22,4 @@ Route::post("/login", [AccountController::class, 'loginPost'])->name('login.post
 Route::get("/logout", [AccountController::class, 'logout'])->name('logout');
 Route::get("/cart", [CartController::class, 'index'])->name('cart');
 Route::get("/cart/add/{id}", [CartController::class, 'addToCart'])->name('cart.add');
+Route::get("/cart/delete/{id}", [CartController::class, 'deleteCart'])->name('cart.delete');

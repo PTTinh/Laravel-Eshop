@@ -44,7 +44,7 @@ class ProductCateController extends BaseController
         unset($data['_token']);
         $product_cate = new ProductCate($data);
         $product_cate->save();
-        return redirect()->route('product_cate.index');
+        return redirect()->route('product_cate.index')->with('success', 'Thêm danh mục thành công');
     }
 
     /**
@@ -84,7 +84,7 @@ class ProductCateController extends BaseController
     {
         $this->custom_validate($request);
         ProductCate::find($id)->update(['name' => $request->name]);
-        return redirect()->route('product_cate.index');
+        return redirect()->route('product_cate.index')->with('success', 'Cập nhật danh mục thành công');
     }
 
     /**
@@ -98,10 +98,10 @@ class ProductCateController extends BaseController
         // kiểm tra xem danh mục có sản phẩm không
         $count_product = Product::where('product_cate_id', $id)->count();
         if ($count_product > 0) {
-            return redirect()->route('product_cate.index');
+            return redirect()->route('product_cate.index')->with('warning', 'Không thể xóa danh mục này vì có sản phẩm thuộc danh mục này');
         }
         ProductCate::destroy($id);
-        return redirect()->route('product_cate.index');
+        return redirect()->route('product_cate.index')->with('success', 'Xóa danh mục thành công');
     }
 
     private function custom_validate($request)

@@ -4,14 +4,16 @@
 @include('include._head')
 
 <body>
+    
+    @include('include._alert')
     @include('include._header')
-    <main>
-        <div class="container">
-            <div class="row">
+    <div class="container">
+        <main>
+          <div class="row">
                 {{ $slot }}
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
     @include('include._footer')
 </body>
 

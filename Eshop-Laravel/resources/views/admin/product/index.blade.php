@@ -117,7 +117,7 @@
             </x-app-input>
             <div class="mb-3">
                 <label for="description_update" class="form-label">Mô tả sản phẩm <span class="text-danger">*</span></label>
-                <textarea name="description" id="description_update" class="form-control" rows="5" required></textarea>
+                <textarea name="description" id="description_update" class="form-control" rows="5"></textarea>
             </div>
             <div class="mb-3">
                 <label for="img_update" class="form-label">Ảnh Sản Phẩm <span class="text-danger">*</span></label>
